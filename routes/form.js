@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Entrant = require('../entrantDB.js');
+var Entrant = require('../entrantdb.js');
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
