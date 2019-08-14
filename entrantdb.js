@@ -35,6 +35,7 @@ client.connect();
 
 //Entrant Class Constructor
 var Entrant = function (entrant) {
+  this.queryValues = [entrant.first_name, entrant.last_name, entrant.address_1, entrant.address_2, entrant.city, entrant.state, entrant.zip, entrant.country] ;
   this.first_name= entrant.first_name ;
   this.last_name= entrant.last_name;
   this.address_1= entrant.address_1 ;
@@ -47,8 +48,8 @@ var Entrant = function (entrant) {
 
 //Save the Entrant's information to the database.
 Entrant.saveEntry = function (newEntry, result) {
-    client.query("INSERT INTO entrant set ?", newEntry, function (err, res) {
-
+    client.query("INSERT INTO entrant set ?", newEntry.queryValues, function (err, res) {
+        console.log('Response!',res);
         if(err) {
             console.log("error: ", err);
             result(err, null);
