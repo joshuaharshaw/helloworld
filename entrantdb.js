@@ -47,7 +47,7 @@ var Entrant = function (entrant) {
 
 //Save the Entrant's information to the database.
 Entrant.saveEntry = function (newEntry, result) {
-    connection.query("INSERT INTO entrant set ?", newEntry, function (err, res) {
+    client.query("INSERT INTO entrant set ?", newEntry, function (err, res) {
 
         if(err) {
             console.log("error: ", err);
