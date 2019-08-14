@@ -77,3 +77,14 @@ input:invalid {
   margin:0px auto;
   padding: 5px;
 }
+
+
+#successbox {
+  height: 75px;
+}
+#success {
+  margin-top: 10px;
+}
+#message {
+  font-size: 2em;
+}
