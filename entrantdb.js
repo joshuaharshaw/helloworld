@@ -1,19 +1,37 @@
 'use strict';
 
-var mysql = require('mysql');
+// var mysql = require('mysql');
+//
+// //local mysql db connection
+// var connection = mysql.createConnection({
+//     host     : 'localhost',
+//     user     : 'root',
+//     password : 'signupnow10',
+//     database : 'helloworlddb'
+// });
+//
+// //Connect
+// connection.connect(function(err) {
+//     if (err) throw err;
+// });
 
-//local mysql db connection
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'signupnow10',
-    database : 'helloworlddb'
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
 });
 
-//Connect
-connection.connect(function(err) {
-    if (err) throw err;
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
 });
+
 
 //Entrant Class Constructor
 var Entrant = function (entrant) {
@@ -31,7 +49,7 @@ var Entrant = function (entrant) {
 Entrant.saveEntry = function (newEntry, result) {
     connection.query("INSERT INTO entrant set ?", newEntry, function (err, res) {
 
-        if(err) { 
+        if(err) {
             console.log("error: ", err);
             result(err, null);
         }
