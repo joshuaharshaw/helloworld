@@ -16,7 +16,7 @@ router.post('/', function(req, res, next) {
           res.send(response);
         } else
         {
-          res.redirect('/users');
+          res.redirect('/success');
         }
   });
 
