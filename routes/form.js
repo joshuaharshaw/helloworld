@@ -12,11 +12,11 @@ router.post('/', function(req, res, next) {
             result:result
         }
 
-        if (response.recID) {
-          res.redirect('/users');
+        if (response.result) {
+          res.send(response);
         } else
         {
-          res.send(response);
+          res.redirect('/users');
         }
   });
 

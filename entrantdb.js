@@ -49,7 +49,6 @@ var Entrant = function (entrant) {
 //Save the Entrant's information to the database.
 Entrant.saveEntry = function (newEntry, result) {
 
-
     client.query("INSERT INTO entrant (first_name, last_name,address_1,address_2, city, state, zip, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", newEntry.queryValues, function (err, res) {
         console.log('Response!',res);
         if(err) {
@@ -62,6 +61,7 @@ Entrant.saveEntry = function (newEntry, result) {
         }
 
     });
+    
 };
 
 module.exports = Entrant;
