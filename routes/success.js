@@ -3,7 +3,7 @@ var router = express.Router();
 
 // Get the Success page
 router.get('/success', function(req, res, next) {
-  res.render('success', { title: 'Express' });
+  res.render('success', { title: 'Success' });
 });
 
 module.exports = router;
