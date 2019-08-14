@@ -63,5 +63,5 @@ Entrant.saveEntry = function (newEntry, result) {
 
 module.exports = Entrant;
 
-// Port: 3306
+// Port: 5432 (PostGres)
 // Pwd: signupnow10
